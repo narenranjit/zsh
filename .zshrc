@@ -40,5 +40,9 @@ plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
+##Setup z
+_Z_DATA = $ZSH_CUSTOM/.z
+. $ZSH_CUSTOM/z/z.sh
+
 # Customize to your needs...
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
