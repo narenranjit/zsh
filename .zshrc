@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
-ZSH_CUSTOM=~/.config/zsh
+ZSH_CUSTOM=~/dotfiles/zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -10,8 +10,6 @@ ZSH_CUSTOM=~/.config/zsh
 ZSH_THEME="lightning-git"
 
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 
@@ -36,13 +34,29 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git zsh-syntax-highlighting)
+plugins=(zsh-syntax-highlighting per-directory-history last-working-dir)
 
 source $ZSH/oh-my-zsh.sh
+source ~/dotfiles/osx/iterm2/colorize-ssh-tab.zsh
 
-##Setup z
-_Z_DATA = $ZSH_CUSTOM/.z
-. $ZSH_CUSTOM/z/z.sh
+eval "$(grunt --completion=zsh)"
+eval "$(fasd --init auto)"
+
+alias o='a -e open'
+alias subl='f -e sublime'
+alias ni='npm install -D'
+alias gs='gitsh --git $(which hub)'
+
+mcd() { mkdir $1 && cd $1; }
+
+precmd() {
+  # sets the tab title to current dir
+  echo -ne "\e]1;${PWD##*/}\a"
+}
 
 # Customize to your needs...
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/python
+
+ACKRC="~/dotfiles/.ackrc"
+
+
