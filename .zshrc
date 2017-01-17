@@ -10,9 +10,7 @@ ZSH_CUSTOM=~/dotfiles/zsh
 ZSH_THEME="lightning-git"
 
 # Example aliases
-
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
@@ -34,7 +32,7 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(per-directory-history zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 source ~/dotfiles/osx/iterm2/colorize-ssh-tab.zsh
@@ -58,7 +56,6 @@ precmd() {
 
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/python
-
 ACKRC="~/dotfiles/.ackrc"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
