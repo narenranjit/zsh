@@ -1,6 +1,5 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
-
 ZSH_CUSTOM=~/dotfiles/zsh
 
 # Set name of the theme to load.
@@ -31,23 +30,20 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(zsh-syntax-highlighting per-directory-history last-working-dir)
-
 source $ZSH/oh-my-zsh.sh
 source ~/dotfiles/osx/iterm2/colorize-ssh-tab.zsh
 
-eval "$(grunt --completion=zsh)"
 eval "$(fasd --init auto)"
 
 alias o='a -e open'
-alias subl='f -e sublime'
+# alias subl='f -e sublime'
 alias ni='npm install -D'
 alias gs='gitsh --git $(which hub)'
+alias F='~/FPrjs/forio-cli/index.coffee'
 
+prj() { mkdir $1 && cd $1 && git setup && subl . }
 mcd() { mkdir $1 && cd $1; }
+gcd() { git clone $1 && cd $1; }
 
 precmd() {
   # sets the tab title to current dir
@@ -59,4 +55,6 @@ export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/python
 
 ACKRC="~/dotfiles/.ackrc"
 
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+plugins=(per-directory-history zsh-syntax-highlighting)
